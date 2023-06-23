@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-function Razorpay() {
+function Razorpay({ handleSubmit }) {
 
     const initPayment = () => {
 
@@ -31,9 +31,9 @@ function Razorpay() {
         pay.open();
     }
 
-  return (
-     <button onClick={initPayment}>Pay</button>
-  )
+    return (
+        <button onClick={initPayment}>Pay</button>
+    )
 }
 
 export default Razorpay

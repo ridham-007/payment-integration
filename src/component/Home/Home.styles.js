@@ -22,26 +22,47 @@ const Wrapper = styled.div`
     flex-grow: 1;
     flex-basis: 0;
     justify-content: space-around; 
+    flex-direction: row;
+
+    @media (max-width: 767px) {
+    flex-direction:column;
+  }
 
     p{
         padding-top: 80px;
+
+        @media (max-width: 767px) {
+        padding-top: 20px
     }
+}
 
     img{
         width: 450px;
+
+         @media (max-width: 767px) {
+            width: 100%;
     }
+
 `;
 
 const WrapperCard = styled.div`
     display: flex;
-    flex-grow: 1;
+    justify-content: space-between;
     flex-basis: 0;
-    justify-content: space-around;
+    width: 100%;
+    flex-direction: row;
+    gap: 40px;
+
+    @media (max-width: 767px) {
+    display: block;
+  }
 
 `;
 
 const WrapperDiv = styled.div`
-    width: 25%;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
     height: 200px;
     border: 1px solid #428BCA;
     border-radius: 10px;
@@ -49,7 +70,12 @@ const WrapperDiv = styled.div`
     justify-content: space-around;
     align-items: center;
     position: relative;
-    
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+ 
     .Wrapper-img1{
         position: absolute;
         top: 50%;
@@ -78,7 +104,9 @@ const WrapperDiv = styled.div`
 `;
 
 const WrapperDiv1 = styled.div`
-    width: 25%;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
     height: 200px;
     border: 1px solid #08C988;
     border-radius: 10px;
@@ -86,6 +114,10 @@ const WrapperDiv1 = styled.div`
     justify-content: space-around;
     align-items: center;
     position: relative;
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
     
     .Wrapper-img1{
         position: absolute;
@@ -114,7 +146,9 @@ const WrapperDiv1 = styled.div`
 `;
 
 const WrapperDiv2 = styled.div`
-    width: 25%;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
     height: 200px;
     border: 1px solid #FFE0A9;
     border-radius: 10px;
@@ -122,6 +156,10 @@ const WrapperDiv2 = styled.div`
     justify-content: space-around;
     align-items: center;
     position: relative;
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
     
     .Wrapper-img1{
         position: absolute;

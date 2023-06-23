@@ -1,7 +1,11 @@
 import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function PayPal() {
+
+    const { amount } = useParams();
+    const navigate = useNavigate();
 
     const serverUrl = "http://localhost:8000";
 
@@ -21,9 +25,9 @@ export default function PayPal() {
             // use the "body" param to optionally pass additional order information
             // like product skus and quantities
             body: JSON.stringify({
-                product:{
+                product: {
                     description: "",
-                    cost: "399.00"
+                    cost: String(amount)
                 }
             }),
         })
@@ -41,16 +45,19 @@ export default function PayPal() {
                 orderID: data.orderID
             })
         }).then((response) => {
-            console.log("Payment Successful");
             return response.json()
-        }).then((data) => console.log(data))
+        }).then((data) => {
+            if (data.status === "COMPLETED") {
+                navigate("/");
+            }
+        })
     };
 
 
-    return(
+    return (
         <PayPalScriptProvider options={initialOptions}>
             <PayPalButtons createOrder={(data, actions) => createOrder(data, actions)}
-                           onApprove={(data, actions) => onApprove(data, actions)} />
-    </PayPalScriptProvider>
+                onApprove={(data, actions) => onApprove(data, actions)} />
+        </PayPalScriptProvider>
     )
 }

@@ -42,6 +42,7 @@ let stripeGateway = stripe(process.env.STRIPE_KEY_SECRET);
 app.post("/stripe-checkout", async (req, res) => {
     try{
     const session = await stripeGateway.checkout.sessions.create({
+        shipping_address_collection: { allowed_countries: ["IN"] },
         payment_method_types: ["card"],
         mode: "payment",
         line_items: req.body.items.map(item => {
